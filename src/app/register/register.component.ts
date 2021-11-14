@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  // @ts-ignore
   form: FormGroup;
   loading = false;
   submitted = false;

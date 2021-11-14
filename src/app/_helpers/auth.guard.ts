@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
+import {AccountService} from "../_services/account.service";
 
 @Injectable({ providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -9,7 +10,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    const user = this.accountService.userValue;
+    const user = this.accountService.adminValue;
     if (user) {
       return true;
     }

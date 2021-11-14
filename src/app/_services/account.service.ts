@@ -4,6 +4,7 @@ import {Admin} from "../_models/admin";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {AdminRegister} from "../_models/adminRegister";
 
 @Injectable({providedIn: 'root'})
 export class AccountService {
@@ -38,5 +39,9 @@ export class AccountService {
     // @ts-ignore
     this.adminSubject.next(null);
     this.router.navigate(['/account/login']);
+  }
+
+  register(admin: AdminRegister) {
+    return this.http.post(`${environment.apiUrl}/admins/register`, admin);
   }
 }

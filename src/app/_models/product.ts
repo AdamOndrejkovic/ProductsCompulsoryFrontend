@@ -1,6 +1,6 @@
 export class Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
+  id: number | undefined;
+  name: string | undefined;
+  description: string | undefined;
+  price: number | undefined;
 }

@@ -1,6 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
 import {NavigationStart, Router} from "@angular/router";
+import {Alert, AlertType} from "../../_models/alert";
+import {AlertService} from "../../_services/alert.service";
 
 @Component({selector: 'alert', templateUrl: 'alert.component.html'})
 export class AlertComponent implements OnInit, OnDestroy {
@@ -8,19 +10,21 @@ export class AlertComponent implements OnInit, OnDestroy {
   @Input() fade = true;
 
   alerts: Alert[] = [];
-  alertSubscription: Subscription;
-  routeSubscription: Subscription;
+  alertSubscription: Subscription | undefined;
+  routeSubscription: Subscription | undefined;
 
   constructor(private router: Router, private alertService: AlertService) {
   }
 
 
   ngOnInit(): void {
+    // @ts-ignore
     this.alertSubscription = this.alertService.onAlert(this.id)
       .subscribe(alert => {
         if (!alert.message){
           this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
 
+          // @ts-ignore
           this.alerts.forEach(x => delete x.keepAfterRouteChange);
           return
         }
@@ -38,7 +42,9 @@ export class AlertComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // @ts-ignore
     this.alertSubscription.unsubscribe();
+    // @ts-ignore
     this.routeSubscription.unsubscribe();
   }
 
@@ -46,6 +52,7 @@ export class AlertComponent implements OnInit, OnDestroy {
     if (!this.alerts.includes(alert)) return;
 
     if (this.fade) {
+      // @ts-ignore
       this.alerts.find(x => x === alert).fade = true;
 
       setTimeout(() => {
@@ -68,6 +75,7 @@ export class AlertComponent implements OnInit, OnDestroy {
       [AlertType.Warning]: 'alert alert-warning',
     }
 
+    // @ts-ignore
     classes.push(alertTypeClass[alert.type]);
 
     if (alert.fade) {

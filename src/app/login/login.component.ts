@@ -11,10 +11,10 @@ import {first} from "rxjs";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup | undefined;
   loading = false;
   submitted = false;
-  returnUrl: string;
+  returnUrl: string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   get f() {
+    // @ts-ignore
     return this.form.controls;
   }
 
@@ -42,12 +43,13 @@ export class LoginComponent implements OnInit {
 
     this.alertService.clear();
 
+    // @ts-ignore
     if (this.form.invalid){
       return;
     }
 
     this.loading = true;
-    this.accountService.login(this.f.username.value, this.f.password.value)
+    this.accountService.login(this.f['username'].value, this.f['password'].value)
       .pipe(first())
       .subscribe(
         data => {

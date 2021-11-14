@@ -1,10 +1,11 @@
 export class Alert {
-  id: string;
-  type: AlertType;
-  message: string;
-  autoClose: boolean;
+  id: string | undefined;
+  type: AlertType | undefined;
+  message: string | undefined;
+  autoClose: boolean | undefined;
+  // @ts-ignore
   keepAfterRouteChange: boolean;
-  fade: boolean;
+  fade: boolean | undefined;
 
   constructor(init?:Partial<Alert>) {
     Object.assign(this, init)
