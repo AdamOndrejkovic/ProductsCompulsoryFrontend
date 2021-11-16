@@ -34,7 +34,10 @@ export class RegisterComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.form.controls; }
+  get firstName(){return this.form.get('firstname')}
+  get lastName(){return this.form.get('lastname')}
+  get username(){return this.form.get('username')}
+  get password(){return this.form.get('password')}
 
   onSubmit() {
     this.submitted = true;

@@ -8,7 +8,7 @@ import {AccountService} from "../_services/account.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  admin: Admin;
+  admin: Admin | null;
 
   constructor(private accountService: AccountService) {
     this.admin = this.accountService.adminValue;

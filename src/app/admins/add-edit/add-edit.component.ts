@@ -7,9 +7,9 @@ import {ProductService} from "../../_services/product.service";
 
 @Component({templateUrl: 'add-edit.component.html'})
 export class AddEditComponent implements OnInit {
-  form: FormGroup | undefined;
-  id: number | undefined;
-  isAddMode: boolean | undefined;
+  form!: FormGroup
+  id!: number;
+  isAddMode!: boolean;
   loading = false;
   submitted = false;
 
@@ -31,24 +31,21 @@ export class AddEditComponent implements OnInit {
     });
 
     if (!this.isAddMode) {
-      // @ts-ignore
       this.productService.getById(this.id)
         .pipe(first())
-        .subscribe(x => {
-          this.f["name"].setValue(x.name);
-          this.f["description"].setValue(x.description);
-          this.f["price"].setValue(x.price);
+        .subscribe(product => {
+          this.form.patchValue(product)
         });
     }
   }
 
-  get f() { // @ts-ignore
-    return this.form.controls; }
+  get name(){return this.form.get('name')}
+  get description(){return this.form.get('description')}
+  get price(){return this.form.get('price')}
 
   onSubmit() {
     this.submitted = true;
     this.alertService.clear();
-    // @ts-ignore
     if (this.form.invalid){
       return;
     }
@@ -57,7 +54,6 @@ export class AddEditComponent implements OnInit {
   }
 
   private createProduct() {
-    // @ts-ignore
     this.productService.create(this.form.value)
       .pipe(first())
       .subscribe(
@@ -72,8 +68,7 @@ export class AddEditComponent implements OnInit {
       )
   }
 
-  private updateUser(){
-    // @ts-ignore
+  private updateProduct(){
     this.productService.update(this.form.value)
       .pipe(first())
       .subscribe(

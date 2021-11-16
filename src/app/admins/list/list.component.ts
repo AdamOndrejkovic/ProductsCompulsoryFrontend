@@ -4,8 +4,7 @@ import {first} from "rxjs";
 
 @Component({templateUrl: 'list.component.html'})
 export class ListComponent implements OnInit {
-  // @ts-ignore
-  products;
+  products: any;
 
   constructor(private productService: ProductService) {
   }
@@ -17,14 +16,12 @@ export class ListComponent implements OnInit {
   }
 
   deleteProduct(id: number){
-    // @ts-ignore
-    const product = this.products.find(x => x.id === id);
+    const product = this.products.find((x: { id: number; }) => x.id === id);
     product.isDeleting = true;
     this.productService.delete(id)
       .pipe(first())
       .subscribe(() => {
-        // @ts-ignore
-        this.products = this.products.filter(x => x.id !== id)
+        this.products = this.products.filter((x: { id: number; }) => x.id !== id)
       })
   }
 }

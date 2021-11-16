@@ -8,19 +8,21 @@ import {AdminRegister} from "../_models/adminRegister";
 
 @Injectable({providedIn: 'root'})
 export class AccountService {
-  private adminSubject: BehaviorSubject<Admin>;
-  private admin: Observable<Admin>;
+  adminSubject = new BehaviorSubject<Admin | null>(null);
+  public admin!: Observable<Admin>;
 
   constructor(
     private router: Router,
     private http: HttpClient
   ) {
-    // @ts-ignore
-    this.adminSubject = new BehaviorSubject<Admin>(JSON.parse(localStorage.getItem('admin')));
-    this.admin = this.adminSubject.asObservable();
+    let local = localStorage.getItem('admin')
+    if (local != null) {
+      this.adminSubject.next(JSON.parse(local));
+      //this.admin = this.adminSubject.asObservable();
+    }
   }
 
-  public get adminValue(): Admin {
+  public get adminValue(): Admin | null {
     return this.adminSubject.value;
   }
 
@@ -36,7 +38,6 @@ export class AccountService {
 
   logout(){
     localStorage.removeItem('admin');
-    // @ts-ignore
     this.adminSubject.next(null);
     this.router.navigate(['/account/login']);
   }

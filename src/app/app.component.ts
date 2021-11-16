@@ -9,10 +9,10 @@ import {AccountService} from "./_services/account.service";
 })
 export class AppComponent {
   title = 'CompulsoryFrontend';
-  admin: Admin;
+  admin: Admin | null | undefined;
 
   constructor(private accountService: AccountService) {
-    this.accountService.admin.subscribe(x => this.admin = x)
+    this.accountService.adminSubject.subscribe(x => this.admin = x)
   }
 
   logout() {

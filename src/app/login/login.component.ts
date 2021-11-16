@@ -33,33 +33,32 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get f() {
-    // @ts-ignore
-    return this.form.controls;
-  }
+  get username(){return this.form?.get('username')}
+  get password(){return this.form?.get('password')}
 
   onSubmit() {
     this.submitted = true;
 
     this.alertService.clear();
 
-    // @ts-ignore
-    if (this.form.invalid){
+    if (this.form && this.form.invalid){
       return;
     }
 
-    this.loading = true;
-    this.accountService.login(this.f['username'].value, this.f['password'].value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.error(error)
-          this.loading = false;
-        }
-      )
+    if (this.username && this.password){
+      this.loading = true;
+      this.accountService.login(this.username?.value, this.password?.value)
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.router.navigate([this.returnUrl]);
+          },
+          error => {
+            this.alertService.error(error)
+            this.loading = false;
+          }
+        )
+    }
   }
 
 }
