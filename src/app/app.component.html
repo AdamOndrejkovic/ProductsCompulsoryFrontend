@@ -1,14 +1,19 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="admin">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
-       [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a class="nav-item nav-link" routerLink="/admins" routerLinkActive="active">Admins</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<nav>
+  <span>
+    <img src="./assets/lego.gif" alt="logo">
+  </span>
 
-<!-- main app container -->
-<div class="app-container" [ngClass]="{ 'bg-light': admin }">
-  <alert></alert>
+  <h3>Welcome to LEGO Shop</h3>
+
+  <span>
+    <img src="./assets/menu.png" alt="logo">
+  </span>
+
+</nav>
+<div class="main">
   <router-outlet></router-outlet>
 </div>
+<footer>
+
+</footer>
+

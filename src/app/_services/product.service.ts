@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   getAll() {
-    return this.http.get<Product>(`${environment.apiUrl}/products`);
+    return this.http.get<Product>(`${environment.apiUrl}/product`);
   }
 
   update(product: Product){

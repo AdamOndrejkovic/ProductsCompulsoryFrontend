@@ -1,0 +1,18 @@
+<h1>Products Overview</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th style="width: 30%">Name</th>
+    <th style="width: 30%">Description</th>
+    <th style="width: 30%">Price</th>
+    <th style="width: 10%"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+  </tr>
+  </tbody>
+</table>

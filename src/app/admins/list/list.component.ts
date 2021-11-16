@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ProductService} from "../../_services/product.service";
 import {first} from "rxjs";
 
-@Component({templateUrl: 'list.component.html'})
+@Component({templateUrl: 'list.component.html',selector:"app-list-products"})
 export class ListComponent implements OnInit {
   products: any;
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Admin} from "./_models/admin";
 import {AccountService} from "./_services/account.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,4 @@ import {AccountService} from "./_services/account.service";
 })
 export class AppComponent {
   title = 'CompulsoryFrontend';
-  admin: Admin | null | undefined;
-
-  constructor(private accountService: AccountService) {
-    this.accountService.adminSubject.subscribe(x => this.admin = x)
-  }
-
-  logout() {
-    this.accountService.logout();
-  }
 }

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Estonia&family=Irish+Grover&family=Qahiri&display=swap');
+
+nav {
+  display: flex;
+  height: 150px;
+  width: 100%;
+  background-image: url("../assets/header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+nav span:first-of-type{
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+nav span:first-of-type img{
+  width: 120px;
+  height: 100px;
+}
+
+nav span:last-of-type{
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+
+nav span:last-of-type img{
+  width: 75px;
+  height: 75px;
+}
+
+nav h3 {
+  margin: auto;
+  font-size: 32px;
+  letter-spacing: 2px;
+  font-family: 'Irish Grover', cursive;
+}

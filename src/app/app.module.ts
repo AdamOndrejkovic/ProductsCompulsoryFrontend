@@ -10,18 +10,24 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AlertComponent} from "./_components/alert/alert.component";
+import {AdminsModule} from "./admins/admins/admins.module";
+import { ProductListComponent } from './product-list/product-list.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        AdminsModule
+    ],
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent,
+    AdminPanelComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
