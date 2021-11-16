@@ -1,32 +1,4 @@
-h1{
-  text-align: center;
-  animation: fade-in 5s;
-  opacity: 0;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-}
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  25%{
-    opacity: 3;
-    color: green;
-  }
-  50%{
-    opacity: 6;
-    color: yellow;
-  }
-  75%{
-    opacity: 9;
-    color: blue;
-  }
-  100%{
-    opacity: 1;
-    color: red;
-  }
-}
 
 #product {
   font-family: Arial, Helvetica, sans-serif;

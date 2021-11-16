@@ -1,12 +1,24 @@
 import {Component, OnInit} from "@angular/core";
 import {ProductService} from "../../_services/product.service";
 import {first} from "rxjs";
+import {Admin} from "../../_models/admin";
+import {AccountService} from "../../_services/account.service";
+import {style} from "@angular/animations";
 
-@Component({templateUrl: 'list.component.html',selector:"app-list-products"})
+@Component({templateUrl: 'list.component.html',selector:"app-list-products", styleUrls: ['list.component.css']})
 export class ListComponent implements OnInit {
   products: any;
+  admin: Admin | null | undefined;
 
-  constructor(private productService: ProductService) {
+
+
+  logout() {
+    this.accountService.logout();
+  }
+
+
+  constructor(private productService: ProductService,private accountService: AccountService) {
+    this.accountService.adminSubject.subscribe(x => this.admin = x)
   }
 
   ngOnInit() {

@@ -12,7 +12,7 @@ export class ProductService {
   ) {}
 
   create(product: Product){
-    return this.http.post(`${environment.apiUrl}/products/create`, product);
+    return this.http.post(`${environment.apiUrl}/product`, product);
   }
 
   getAll() {
@@ -20,15 +20,15 @@ export class ProductService {
   }
 
   update(product: Product){
-    return this.http.put(`${environment.apiUrl}/products/update`, product);
+    return this.http.put(`${environment.apiUrl}/product/update`, product);
   }
 
   delete(id: number){
-    return this.http.delete(`${environment.apiUrl}/products/${id}`);
+    return this.http.delete(`${environment.apiUrl}/product/${id}`);
   }
 
 
   getById(id: number) {
-    return this.http.get<Product>(`${environment.apiUrl}/products/${id}`);
+    return this.http.get<Product>(`${environment.apiUrl}/product/${id}`);
   }
 }
