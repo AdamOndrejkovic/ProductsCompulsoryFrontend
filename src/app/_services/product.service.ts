@@ -20,7 +20,7 @@ export class ProductService {
   }
 
   update(product: Product){
-    return this.http.put(`${environment.apiUrl}/product/update`, product);
+    return this.http.put(`${environment.apiUrl}/product`, product);
   }
 
   delete(id: number){

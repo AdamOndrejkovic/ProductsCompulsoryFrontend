@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<Admin>(`${environment.apiUrl}/Login`,{username, password})
+    return this.http.post<Admin>(`${environment.apiUrl}/Login/Login`,{username, password})
       .pipe(map(admin => {
           localStorage.setItem('admin', JSON.stringify(admin));
           this.adminSubject.next(admin);
@@ -43,6 +43,6 @@ export class AccountService {
   }
 
   register(admin: AdminRegister) {
-    return this.http.post(`${environment.apiUrl}/admins/register`, admin);
+    return this.http.post(`${environment.apiUrl}/Login/Register`, admin);
   }
 }
