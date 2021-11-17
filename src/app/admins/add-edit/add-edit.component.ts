@@ -53,13 +53,13 @@ export class AddEditComponent implements OnInit {
 
   }
 
-  private createProduct() {
+  createProduct() {
     this.productService.create(this.form.value)
       .pipe(first())
       .subscribe(
         data => {
           this.alertService.success('Product successfully added.', {keepAfterRouteChange: true})
-          this.router.navigate(['.', {relativeTo: this.route}]);
+          this.router.navigate(['/admin', {relativeTo: this.route}]);
         },
         error => {
           this.alertService.error(error);
@@ -68,13 +68,13 @@ export class AddEditComponent implements OnInit {
       )
   }
 
-  private updateProduct(){
+  updateProduct(){
     this.productService.update(this.form.value)
       .pipe(first())
       .subscribe(
         data => {
           this.alertService.success('Product successfully updated.', {keepAfterRouteChange: true})
-          this.router.navigate(['..', {relativeTo: this.route}]);
+          this.router.navigate(['/admin', {relativeTo: this.route}]);
         },
         error => {
           this.alertService.error(error);

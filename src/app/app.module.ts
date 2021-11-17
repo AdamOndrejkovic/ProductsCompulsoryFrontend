@@ -12,7 +12,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AlertComponent} from "./_components/alert/alert.component";
 import {AdminsModule} from "./admins/admins/admins.module";
 import { ProductListComponent } from './product-list/product-list.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
     imports: [
@@ -27,7 +26,6 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     AlertComponent,
     HomeComponent,
     ProductListComponent,
-    AdminPanelComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
